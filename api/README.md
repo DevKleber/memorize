@@ -1,4 +1,2 @@
-## PECUS GUIA  
+# Back-end
 
-# Configurando JWT  
-https://www.youtube.com/watch?v=Ri-DLFeepbM
