@@ -1,0 +1,27 @@
+<div class="login">
+
+	<div class="cardTitle">
+		<div class="title">
+			Memorize | Login
+		</div>
+		<div class="subTitle">Entre na sua conta</div>
+	</div>
+	<br>
+
+	<form [formGroup]="loginForm">
+		<app-input-container>
+			<input type="text" formControlName="email" class="form-control" placeholder="Username" autofocus />
+		</app-input-container>
+
+		<app-input-container>
+			<input type="password" formControlName="password" class="form-control" placeholder="Password" />
+		</app-input-container>
+
+
+		<button (click)="login()" class="btn btn-primary btn-lg btn-block btnentrar" [disabled]="loginForm.invalid">
+			Entrar
+		</button>
+	</form>
+
+</div>
+<div class="bg-img"></div>

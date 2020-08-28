@@ -1,0 +1,11 @@
+.loader {
+    position: absolute;
+    left: 48%;
+    top: 48%;
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+    background: url('../../../assets/img/system/loader.svg') no-repeat;
+    background-size: 100px 100px;
+  }
+  

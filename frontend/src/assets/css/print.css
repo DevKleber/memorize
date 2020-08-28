@@ -1,0 +1,19 @@
+/*CSS para impressão*/
+@media print {
+
+    header,
+    nav,
+    footer,
+    video,
+    audio,
+    object,
+    embed,
+    #navbar {
+        display: none;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+}

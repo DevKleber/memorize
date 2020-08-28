@@ -1,0 +1,16 @@
+<div class="form-group has-feedback" [class.has-success]="hasSuccess()" [class.has-warning]="hasError()">
+    <ng-container *ngIf="hasRequired(); else elseTemplate">
+      <label *ngIf="labelInput().length" class="{{getClass()}} control-label" for="" innerHtml="{{labelInput()}} <i class='fas fa-asterisk obrigatorio' ></i>">
+          
+      </label>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <label  *ngIf="labelInput().length" class="{{getClass()}} control-label" for="" [innerHtml]="labelInput()"> </label>
+    </ng-template>
+    <!-- {{labelInput()}}  -->
+    <ng-content></ng-content>
+      <label *ngIf="hasError()" class="control-label control-error" for="inputSuccess">
+        <!-- <span *ngIf="showTip && hasSuccess()"><i class="fa fa-check"></i>Ok</span> -->
+        <span *ngIf="showTip && hasError()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
+      </label>
+  </div>  

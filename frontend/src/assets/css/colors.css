@@ -1,0 +1,11 @@
+:root {
+    --background: #212025;
+    --backgroundColor: rgb(233, 233, 233);
+    --colorPrimary: #fff;
+    --backgroundButton: #04d361;
+    --backgroundButtonHover: #0df576;
+    --backgroundButtonDisabled: #95fcc1;
+    --backgroundButtonDisabledColor: #212025;
+    --backgroundButtonColor: #fff;
+    --primary: #04d361;
+}
