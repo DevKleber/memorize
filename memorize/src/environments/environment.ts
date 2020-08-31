@@ -5,11 +5,11 @@
 export const environment = {
 	production: false,
 	// api: "http://apicampanha.siagesc.com.br/api"
-	api: "http://127.0.0.1:8000/api",
+	api: 'http://127.0.0.1:8000/api',
 	// api: "https://apiadmin.primepremios.com.br/api",
-	apiPublic: "https://apiadmin.primepremios.com.br/public",
-	apiDominio: "https://apiadmin.primepremios.com.br",
-	apiSite: "https://apisite.primepremios.com.br",
+	apiPublic: 'http://127.0.0.1:8000/public',
+	apiDominio: 'http://127.0.0.1:8000',
+	apiSite: 'http://127.0.0.1:8000',
 };
 
 /*

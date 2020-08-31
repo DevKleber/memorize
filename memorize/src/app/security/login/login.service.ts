@@ -1,13 +1,13 @@
-import { Injectable, EventEmitter } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router, NavigationEnd } from "@angular/router";
-import { Observable } from "rxjs";
-import { tap, filter, flatMap } from "rxjs/operators";
-import { API } from "../../app.api";
-import { Helper } from "../../helper";
-import { User } from "./user.model";
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs';
+import { tap, filter, flatMap } from 'rxjs/operators';
+import { API } from '../../app.api';
+import { Helper } from '../../helper';
+import { User } from './user.model';
 
-import { NotificationService } from "../../shared/messages/notification.service";
+import { NotificationService } from '../../shared/messages/notification.service';
 
 @Injectable()
 export class LoginService {
@@ -30,14 +30,14 @@ export class LoginService {
 		return this.http.get(`${API}/me`);
 	}
 	getUser() {
-		let user = localStorage.getItem("user");
+		let user = localStorage.getItem('user');
 		let userDecrip = this.helper.decrypt(user);
 		let client = JSON.parse(atob(userDecrip));
 		return client;
 	}
 
 	isLoggedIn(): boolean {
-		if (localStorage.getItem("dG9rZW5fbWVtb3JpemU=") !== null) {
+		if (localStorage.getItem('dG9rZW5fbWVtb3JpemU=') !== null) {
 			this.mostrarMenu.emit(true);
 			return true;
 		}
@@ -45,18 +45,18 @@ export class LoginService {
 		return false;
 	}
 	logoutForce() {
-		localStorage.removeItem("dG9rZW5fbWVtb3JpemU=");
-		localStorage.removeItem("user");
-		localStorage.removeItem("empresa");
+		localStorage.removeItem('dG9rZW5fbWVtb3JpemU=');
+		localStorage.removeItem('user');
+		localStorage.removeItem('empresa');
 		this.mostrarMenu.emit(false);
 		this.user = undefined;
 		this.handleLogin();
 	}
 	logout() {
 		this.http.get(`${API}/auth/logout`).subscribe((resp) => {
-			localStorage.removeItem("dG9rZW5fbWVtb3JpemU=");
-			localStorage.removeItem("user");
-			localStorage.removeItem("empresa");
+			localStorage.removeItem('dG9rZW5fbWVtb3JpemU=');
+			localStorage.removeItem('user');
+			localStorage.removeItem('empresa');
 			this.mostrarMenu.emit(false);
 			this.user = undefined;
 			this.handleLogin();
@@ -73,17 +73,20 @@ export class LoginService {
 			})
 			.pipe(
 				tap((user) => {
-					localStorage.setItem("dG9rZW5fbWVtb3JpemU=", user.token);
+					localStorage.setItem(
+						'dG9rZW5fbWVtb3JpemU=',
+						user.access_token
+					);
 					// localStorage.setItem('user', btoa(JSON.stringify(user.empresa)));
 					let userString = JSON.stringify(user.user);
 					let encrypt = btoa(userString);
 					let myencrypt = this.helper.encrypt(encrypt);
-					localStorage.setItem("user", myencrypt);
+					localStorage.setItem('user', myencrypt);
 
 					let empresaString = this.helper.encrypt(
 						btoa(JSON.stringify(user.empresa))
 					);
-					localStorage.setItem("empresa", empresaString);
+					localStorage.setItem('empresa', empresaString);
 
 					(this.user = user), this.mostrarMenu.emit(true);
 				})
@@ -91,7 +94,7 @@ export class LoginService {
 	}
 	bloquearMenu() {
 		this.mostrarMenu.emit(false);
-		localStorage.removeItem("dG9rZW5fbWVtb3JpemU=");
+		localStorage.removeItem('dG9rZW5fbWVtb3JpemU=');
 		this.handleLogin();
 	}
 	navGoTo(path) {
@@ -104,7 +107,7 @@ export class LoginService {
 		// console.log("ultimo "+path);
 		// console.log('vai mandar para o login');
 		// this.router.navigate(['/login',path]);
-		this.router.navigate(["/login"]);
+		this.router.navigate(['/login']);
 		// this.router.navigate(['/login',btoa(path)])
 	}
 }
