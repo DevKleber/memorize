@@ -67,7 +67,7 @@ CREATE TABLE `sticky` (
   KEY `fk_sticky_usuario1_idx` (`id_usuario`),
   CONSTRAINT `fk_sticky_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_sticky_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `sticky` (
 
 LOCK TABLES `sticky` WRITE;
 /*!40000 ALTER TABLE `sticky` DISABLE KEYS */;
-INSERT INTO `sticky` VALUES (1,'hello','ola','public/storage/imagens/eh7so1CbwG280820202015441_min.png','2020-08-28 23:17:02','2020-08-28 23:17:02',1,1,1);
+INSERT INTO `sticky` VALUES (1,'hello','ola','public/storage/imagens/eh7so1CbwG280820202015441_min.png','2020-08-28 23:17:02','2020-08-28 23:17:02',1,1,1),(2,'Tearjerker','Choradeira','public/storage/imagens/wBPXFJyAYS310820202127171_min.webp','2020-09-01 00:28:04','2020-09-01 00:28:04',1,1,1),(3,'If It Wasn\'t For You','Se não fosse por você',NULL,'2020-09-01 00:51:29','2020-09-01 00:51:29',1,1,1),(4,'The infections run its course thanks to the','A infecção seguiu seu curso graças a',NULL,'2020-09-01 00:55:23','2020-09-01 00:55:23',1,1,1),(5,'Actually, if you grovel for a couple weeks','Na verdade, se você se entregar por algumas semanas','public/storage/imagens/4TSQOn2eXI310820202207421_min.webp','2020-09-01 01:08:27','2020-09-01 01:08:27',1,1,1),(6,'We\'re tied up. Feel the tension?','Estamos presos, sentiu a tensão?','public/storage/imagens/l5Jl594dCW310820202223131_min.jpg','2020-09-01 01:24:46','2020-09-01 01:24:46',1,1,1);
 /*!40000 ALTER TABLE `sticky` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,4 +123,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-28 19:51:51
+-- Dump completed on 2020-09-04 20:20:52
