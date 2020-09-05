@@ -1,31 +1,31 @@
-.titleSticky{
+.titleSticky {
 	font-size: 3em;
 	font-weight: bold;
-	margin-left:20px;
+	margin-left: 20px;
 	/* text-align: center; */
 }
-.sticky{
+.sticky {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 100vw;
 	margin: 0 auto;
 }
 
-.sticky .card{
+.sticky .card {
 	flex: 1 1 0;
 	margin: 20px;
 }
-.image{
+.image {
 	display: flex;
 	width: 100%;
 }
-.sticky .card .image img{
+.sticky .card .image img {
 	width: 200px;
 	/* display: flex; */
 	/* flex: 1; */
 	margin: 0 auto;
 }
-.text{
+.text {
 	display: flex;
 	/* flex: 1; */
 	justify-content: center;
@@ -33,7 +33,7 @@
 	flex-direction: column;
 	height: 100%;
 }
-.front{
+.front {
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -42,13 +42,13 @@
 	/* text-transform: capitalize; */
 	margin-bottom: 15px;
 }
-.back{
+.back {
 	display: flex;
 	justify-content: center;
 	font-size: 1em;
 	margin-bottom: 25px;
 }
-.actions{
+.actions {
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -57,7 +57,7 @@
 	/* text-align: right; */
 	/* height: 50px; */
 }
-.actions .add-sticky{
+.actions .add-sticky {
 	position: relative;
 	float: right;
 	margin-left: 5px;
@@ -66,11 +66,15 @@
 	height: 60px;
 	border-radius: 30px;
 }
-.actions .add-category{
+.actions .add-category {
 	position: relative;
 	float: right;
 	background: var(--icons);
 	width: 60px;
 	height: 60px;
 	border-radius: 30px;
+}
+
+.content {
+	margin-top: 30px;
 }

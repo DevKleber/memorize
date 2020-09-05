@@ -37,6 +37,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -77,6 +78,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		MatNativeDateModule,
 		MatTooltipModule,
 		MatCardModule,
+		MatDialogModule,
 		PerfectScrollbarModule,
 		MatBottomSheetModule,
 		MatButtonModule,
@@ -102,6 +104,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		MatNativeDateModule,
 		MatTooltipModule,
 		MatCardModule,
+		MatDialogModule,
 		PerfectScrollbarModule,
 		MatBottomSheetModule,
 		MatButtonModule,

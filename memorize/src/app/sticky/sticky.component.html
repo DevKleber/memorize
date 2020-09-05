@@ -1,20 +1,23 @@
-<div class="titleSticky">
-	English
-</div>
+<div class="titleSticky">English</div>
 <div class="sticky">
 	<div class="card" *ngFor="let sticky of stickers">
 		<!-- <pre>{{ sticky | json }}</pre> -->
-		<div  [ngClass]="{'text': !sticky.imagem}">
-			<div class="front">{{sticky.frente}}</div>
-			<div class="back">{{sticky.verso}}</div>
+		<div [ngClass]="{ text: !sticky.imagem }">
+			<div class="front">{{ sticky.frente }}</div>
+			<div class="back">{{ sticky.verso }}</div>
 		</div>
 		<div class="image" *ngIf="sticky.imagem">
-			<img src="{{path}}/{{sticky.imagem| helpers:'isDevMode':isDevMode}}" alt="">
+			<img
+				src="{{ path }}/{{
+					sticky.imagem | helpers: 'isDevMode':isDevMode
+				}}"
+				alt=""
+			/>
 		</div>
 	</div>
 </div>
 
 <div class="actions">
-	<div class="add-sticky"> </div>
-	<div class="add-category"> </div>
+	<div class="add-sticky" (click)="openDialog()"></div>
+	<div class="add-category"></div>
 </div>

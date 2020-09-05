@@ -1,39 +1,39 @@
 .bg-img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /* opacity: .8; */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* opacity: .8; */
 	/* background-position: 50%; */
-	background-image: url("../../../assets/img/bg-img/bg-img-3.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+	background-image: url("/../../../assets/img/bg-img/bg-img-3.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	background-size: cover;
 }
-.login{
+.login {
 	position: relative;
 	padding: 25px;
 	width: 300px;
-	background:var(--background);
+	background: var(--background);
 	z-index: 999;
 
 	min-width: 270px;
 	margin: 0 auto;
 	border: 0;
 	box-shadow: none;
-	top:50px;
+	top: 50px;
 	border-radius: 8px;
 }
 
-input{
+input {
 	width: calc(100% - 20px);
-	margin:5px 0;
-	padding:15px 0;
+	margin: 5px 0;
+	padding: 15px 0;
 }
-.btnentrar{
+.btnentrar {
 	width: calc(100%);
-	margin-top:15px;
+	margin-top: 15px;
 	padding: 10px 0;
 	border: transparent;
 
@@ -43,15 +43,14 @@ input{
 	text-transform: uppercase;
 	-webkit-text-decoration: none;
 	text-decoration: none;
-
 }
-.cardTitle{
+.cardTitle {
 	text-align: center;
 }
-.cardTitle .title{
+.cardTitle .title {
 	font-size: 2em;
-	color:var(--backgroundColor);
+	color: var(--backgroundColor);
 }
-.cardTitle .subTitle{
-	color:#bababa;
+.cardTitle .subTitle {
+	color: #bababa;
 }

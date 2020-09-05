@@ -1,5 +1,6 @@
 class User {
 	constructor(
+		public access_token: string,
 		public token: string,
 		public no_funcionario: string,
 		public img: string,

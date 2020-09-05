@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~perfect-scrollbar/css/perfect-scrollbar.css";
 
@@ -20,7 +21,47 @@ body {
 	background: var(--background);
 	color: var(--backgroundColor);
 }
-
+.mat-dialog-container {
+	background: var(--backgroundComponents);
+	color: var(--backgroundComponentsColor);
+}
+label {
+	font-size: 1.2em;
+}
+input,
+textarea {
+	background: var(--background);
+	color: var(--backgroundColor);
+	border: none;
+	padding: 15px;
+	font-size: 1.1em;
+	margin: 6px 0px;
+}
+.form-group {
+	margin-bottom: 1rem;
+}
+label {
+	display: inline-block;
+	margin-bottom: 0.5rem;
+}
+.form-control {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	background-clip: padding-box;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.mat-dialog-actions {
+	text-align: right;
+	float: right;
+}
+.mat-dialog-actions button {
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
 .uploadArquivo {
 	margin: auto;
 	width: 100px;
@@ -87,8 +128,7 @@ button {
 	border-radius: 5px; /* 5px rounded corners */
 	background: var(--backgroundComponents);
 	color: var(--backgroundComponentsColor);
-	padding:15px;
-
+	padding: 15px;
 }
 
 .card:hover {
