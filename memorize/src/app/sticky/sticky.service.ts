@@ -19,8 +19,12 @@ export class StickyService {
 	}
 
 	save(form) {
+		console.log(form);
+		return this.http.post<any>(`${API}/sticky`, form);
+	}
+	file(form) {
 		return this.http
-			.post<any>(`${API}/premio`, form)
+			.post<any>(`${API}/file`, form)
 			.pipe(tap((produto) => {}));
 	}
 

@@ -35,10 +35,13 @@
 							"src/assets/css/sobrescrever.css",
 							"src/assets/css/configTelas.css",
 							"src/assets/css/print.css",
+							"src/assets/lib/bootstrap/css/bootstrap.min.css",
 							"src/styles.css"
 						],
 						"scripts": [
-							"./node_modules/sweetalert2/dist/sweetalert2.js"
+							"./node_modules/sweetalert2/dist/sweetalert2.js",
+							"src/assets/lib/bootstrap/jquery/jquery-3.5.1.slim.min.js",
+							"src/assets/lib/bootstrap/js/bootstrap.min.js"
 						]
 					},
 					"configurations": {

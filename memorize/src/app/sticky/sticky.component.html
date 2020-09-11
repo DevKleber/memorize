@@ -18,6 +18,87 @@
 </div>
 
 <div class="actions">
-	<div class="add-sticky" (click)="openDialog()"></div>
-	<div class="add-category"></div>
+	<div
+		class="add-sticky cursor-pointer"
+		data-toggle="modal"
+		data-target="#exampleModal"
+	></div>
+	<div class="add-category cursor-pointer"></div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="exampleModal"
+	tabindex="-1"
+	aria-labelledby="modalNewSticky"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalNewSticky">Add new sticky</h5>
+			</div>
+			<div class="modal-body">
+				<div class="content">
+					<form [formGroup]="form" novalidate>
+						<div class="form-group">
+							<label for="">Front</label>
+							<textarea
+								class="form-control"
+								formControlName="frente"
+							></textarea>
+						</div>
+						<div class="form-group">
+							<label for="">Verse</label>
+							<textarea
+								class="form-control"
+								formControlName="verso"
+							></textarea>
+						</div>
+						<div class="form-group">
+							<input
+								style="display: none"
+								type="file"
+								(change)="onFileChanged($event)"
+								#fileInput
+								formControlName="img"
+							/>
+							<div
+								class="uploadArquivo"
+								[style.background-image]="
+									'url(' + img + ' )' | safeHtml: 'style'
+								"
+							></div>
+							<button
+								class="btn btn-upload"
+								(click)="fileInput.click()"
+							>
+								Enviar IMG
+							</button>
+						</div>
+					</form>
+					{{ form.value | json }}
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					data-dismiss="modal"
+				>
+					Fechar
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					(click)="save(form.value)"
+				>
+					Salvar
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

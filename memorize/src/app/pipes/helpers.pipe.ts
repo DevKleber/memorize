@@ -23,8 +23,6 @@ export class HelpersPipe implements PipeTransform {
 	}
 
 	isDevMode(value, palavra) {
-		console.log(value);
-		console.log(palavra);
 		let url = value.replace(/public\//g, '');
 		return url;
 	}

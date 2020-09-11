@@ -23,25 +23,25 @@ import { ErrorHandler } from '@angular/core';
 import { LoginComponent } from './security/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MenuComponent,
-    FooterComponent,
-    LoaderComponent,
-    LoginComponent,
-    CommemorationsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    SharedModule.forRoot(),
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		MenuComponent,
+		FooterComponent,
+		LoaderComponent,
+		LoginComponent,
+		CommemorationsComponent,
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		SharedModule.forRoot(),
 
-    // RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
-    RouterModule.forRoot(ROUTES),
-  ],
-  providers: [{ provide: ErrorHandler, useClass: ApplicationErrorHandler }],
-  bootstrap: [AppComponent],
+		// RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
+		RouterModule.forRoot(ROUTES),
+	],
+	providers: [{ provide: ErrorHandler, useClass: ApplicationErrorHandler }],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -21,6 +21,7 @@ body {
 	background: var(--background);
 	color: var(--backgroundColor);
 }
+
 .mat-dialog-container {
 	background: var(--backgroundComponents);
 	color: var(--backgroundComponentsColor);
@@ -34,7 +35,7 @@ textarea {
 	color: var(--backgroundColor);
 	border: none;
 	padding: 15px;
-	font-size: 1.1em;
+	font-size: 1.1em !important;
 	margin: 6px 0px;
 }
 .form-group {
@@ -54,6 +55,23 @@ label {
 	border-radius: 0.25rem;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.modal-dialog,
+.modal-content {
+	background: var(--backgroundComponents) !important;
+	color: var(--backgroundComponentsColor) !important;
+}
+.modal-title {
+	margin-bottom: 0 !important;
+	line-height: 1.5 !important;
+}
+.h5,
+h5 {
+	font-size: 1.25rem;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
 .mat-dialog-actions {
 	text-align: right;
 	float: right;
@@ -62,10 +80,14 @@ label {
 	margin-left: 15px;
 	margin-bottom: 15px;
 }
+.btn-upload {
+	margin: 0 auto;
+	margin-top: 15px;
+}
 .uploadArquivo {
 	margin: auto;
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	top: 0;
 	bottom: 0;
 	left: 0;
