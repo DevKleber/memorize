@@ -80,7 +80,6 @@
 							</button>
 						</div>
 					</form>
-					{{ form.value | json }}
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -95,6 +94,7 @@
 					type="button"
 					class="btn btn-primary"
 					(click)="save(form.value)"
+					[disabled]="!form.valid"
 				>
 					Salvar
 				</button>

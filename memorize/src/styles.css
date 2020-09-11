@@ -143,6 +143,11 @@ button {
 
 	line-height: 26px;
 }
+.btn-secondary {
+	background: none;
+	color: var(--backgroundButtonColorSecondary);
+	border: 1px solid #2e4459;
+}
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
