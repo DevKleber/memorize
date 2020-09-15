@@ -24,9 +24,10 @@
     "@angular/router": "~10.0.14",
     "@fortawesome/angular-fontawesome": "^0.7.0",
     "@ng-select/ng-select": "^5.0.1",
+    "@sweetalert2/theme-borderless": "^4.0.0",
     "ngx-perfect-scrollbar": "^10.0.1",
     "rxjs": "~6.5.5",
-    "sweetalert2": "^9.17.1",
+    "sweetalert2": "^9.17.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

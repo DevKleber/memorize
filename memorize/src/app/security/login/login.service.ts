@@ -64,6 +64,9 @@ export class LoginService {
 		// this.mostrarMenu.emit(false);
 		// this.handleLogin();
 	}
+	newAccount(form) {
+		return this.http.post<any>(`${API}/user/new`, form);
+	}
 
 	login(login: string, password: string): Observable<User> {
 		return this.http

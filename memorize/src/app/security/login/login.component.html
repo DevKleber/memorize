@@ -1,14 +1,27 @@
 <div class="login">
-
-	<div class="cardTitle">
-		<div class="title">
-			Memorize | Login
+	<ng-container *ngIf="!isNewAccount; else elseTemplateNewAccount">
+		<div class="cardTitle">
+			<div class="title">
+				Memorize | Login
+			</div>
+			<div class="subTitle">Entre na sua conta</div>
 		</div>
-		<div class="subTitle">Entre na sua conta</div>
-	</div>
+
+	</ng-container>
+	<ng-template #elseTemplateNewAccount>
+		<div class="cardTitle">
+			<div class="title">
+				<p>Memorize</p>
+
+			</div>
+			<div class="subTitle">Create account</div>
+		</div>
+
+	</ng-template>
+
 	<br>
 
-	<form [formGroup]="loginForm">
+	<form [formGroup]="loginForm" *ngIf="!isNewAccount">
 		<app-input-container>
 			<input type="text" formControlName="email" class="form-control" placeholder="Username" autofocus />
 		</app-input-container>
@@ -19,7 +32,38 @@
 
 
 		<button (click)="login()" class="btn btn-primary btn-lg btn-block btnentrar" [disabled]="loginForm.invalid">
-			Entrar
+			Sign-In
+		</button>
+		<hr>
+		<h3>
+			New to Memorize?
+		</h3>
+		<button (click)="changeToNewAccount()" class="btn btn-secondary btn-block btnNewAccount">
+			Create your Memorize account
+		</button>
+	</form>
+
+	<form [formGroup]="newAccountForm" *ngIf="isNewAccount">
+		<app-input-container>
+			<input type="text" formControlName="nome" class="form-control" placeholder="Name" autofocus />
+		</app-input-container>
+
+		<app-input-container>
+			<input type="text" formControlName="email" class="form-control" placeholder="E-mail" email/>
+		</app-input-container>
+		<app-input-container>
+			<input type="password" formControlName="password" class="form-control" placeholder="Password" />
+		</app-input-container>
+
+		<button (click)="newAccount()" class="btn btn-primary btn-lg btn-block btnentrar" [disabled]="newAccountForm.invalid">
+			Create your Memorize account
+		</button>
+		<hr>
+		<h3>
+			Already have an account?
+		</h3>
+		<button (click)="changeToLogin()" class="btn btn-secondary btn-block btnNewAccount">
+			Sign-In
 		</button>
 	</form>
 

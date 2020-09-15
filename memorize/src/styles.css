@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
-@import "~@ng-select/ng-select/themes/default.theme.css";
+/* @import "~@sweetalert2/theme-borderless/borderless.css"; */
 @import "~perfect-scrollbar/css/perfect-scrollbar.css";
 
 * {
