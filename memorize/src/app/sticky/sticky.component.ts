@@ -10,7 +10,11 @@ import { StickyService } from './sticky.service';
 import { NotificationService } from '../shared/messages/notification.service';
 import { Helper } from '../helper';
 import { API_SITE_PATH_IMG } from './../app.api';
-import { faPlus, faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+	faPlus,
+	faBars,
+	faPlusCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import {
 	FormBuilder,
 	FormControl,
@@ -37,6 +41,7 @@ export class StickyComponent implements OnInit {
 	// Icons
 	faPlus = faPlus;
 	faBars = faBars;
+	faPlusCircle = faPlusCircle;
 
 	@ViewChild('closemodalCategoryAdd', { static: true })
 	closemodalCategoryAdd: ElementRef;
@@ -70,14 +75,13 @@ export class StickyComponent implements OnInit {
 		});
 	}
 	getStickers() {
-		if (this.categoryActive == null) {
+		if (this.categoryActive.id == undefined) {
 			return;
 		}
 		this.stickyService
 			.getSticky(this.categoryActive.id)
 			.subscribe((res) => {
 				this.stickers = res['dados'];
-				this.closemodalStickyAdd.nativeElement.click();
 			});
 	}
 
@@ -114,9 +118,11 @@ export class StickyComponent implements OnInit {
 	saveForm(form) {
 		this.stickyService.save(form).subscribe((data) => {
 			this.notificationService.notifySweet('saved successfully!');
+			this.clearForm();
+			this.form.controls['id_categoria'].setValue(form.id_categoria);
+			this.getStickers();
+			this.closemodalStickyAdd.nativeElement.click();
 		});
-		this.closemodalCategoryAdd.nativeElement.click();
-		this.getStickers();
 	}
 
 	onFileChanged(event) {
@@ -128,22 +134,30 @@ export class StickyComponent implements OnInit {
 		this.img = file.img;
 		this.selectedFile = file.selectedFile;
 	}
+
 	saveCategory() {
 		this.stickyService
 			.saveCategory(this.formCategory.value)
 			.subscribe((res) => {
+				if (this.categories.length == 0) {
+					this.pickCategory(res['dados']);
+				}
 				this.notificationService.notifySweet('saved successfully!');
 				this.getCategories();
 				this.closemodalCategoryAdd.nativeElement.click();
+				// this.clearForm();
+				this.form.controls['id_categoria'].setValue(res['dados'].id);
 			});
 	}
 
 	getCategoryActive() {
 		this.categoryActive = localStorage.getItem('memorize_catActive')
 			? JSON.parse(localStorage.getItem('memorize_catActive'))
-			: null;
+			: {};
 
-		if (this.categoryActive == null) {
+		this.form.controls['id_categoria'].setValue(this.categoryActive.id);
+		console.log(this.categoryActive.id);
+		if (this.categoryActive.id != undefined) {
 			this.setCategoryActive(this.categories[0]);
 		}
 	}
@@ -152,8 +166,16 @@ export class StickyComponent implements OnInit {
 		this.categoryActive = category;
 		localStorage.setItem('memorize_catActive', JSON.stringify(category));
 	}
+
 	pickCategory(category) {
+		console.log(category);
 		this.setCategoryActive(category);
 		this.getStickers();
+		this.closemodalCategoryPick.nativeElement.click();
+		this.form.controls['id_categoria'].setValue(category.id);
+	}
+
+	clearForm() {
+		this.initialForms();
 	}
 }

@@ -59,7 +59,11 @@
 							<textarea class="form-control" formControlName="verso" ></textarea>
 						</div>
 						<div class="form-group">
-							<label for="">Category</label>
+							<label for="">
+								<div class="add-category cursor-pointer" data-toggle="modal" data-target="#modalCategoryAdd">
+									Category <fa-icon class="" [icon]="faPlusCircle"></fa-icon>
+								</div>
+							</label>
 
 							<select class='form-control' formControlName='id_categoria'>
 								<option [value]=''> </option>
@@ -69,7 +73,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput formControlName="img" />
+							<input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput formControlName="imagem" />
 							<div class="uploadArquivo" [style.background-image]=" 'url(' + img + ' )' | safeHtml: 'style' " ></div>
 							<button class="btn btn-upload" (click)="fileInput.click()" > Enviar IMG </button>
 						</div>
