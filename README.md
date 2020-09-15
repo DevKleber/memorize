@@ -16,6 +16,9 @@ PHP 7.4
 https://getcomposer.org/download/  
 composer global require laravel/installer  
 
+MYSQL  
+
+
 ## Demonstration  
 
 # Login  
