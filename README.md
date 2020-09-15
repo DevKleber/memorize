@@ -19,7 +19,7 @@ composer global require laravel/installer
 ## Demonstration  
 
 # Login  
-[<img src="http://i.imgur.com/2JNv1tg.png">]
+<img src="http://i.imgur.com/2JNv1tg.png">
 
 # Sticky  
 <img src="http://i.imgur.com/qKfR0nO.png">  
