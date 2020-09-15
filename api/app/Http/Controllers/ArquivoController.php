@@ -36,7 +36,7 @@ class ArquivoController extends Controller
             return response(['response' => 'Salvo com sucesso', 'dados' => $upload]);
         }
 
-        return  response(['response' => 'Arquivo é obrigatorio'], 400);
+        return response(['response' => 'Salvo com sucesso', 'dados' => '']);
     }
 
     public function show($id)

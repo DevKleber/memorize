@@ -41,6 +41,16 @@ class StickyController extends Controller
         return response($sticky);
     }
 
+    public function byCat($id)
+    {
+        $sticky = \App\Sticky::where('id_usuario', auth('api')->user()->id)->where('bo_ativo', true)->where('id_categoria', $id)->get();
+        if (!$sticky) {
+            return response(['response' => 'Não existe Sticky'], 400);
+        }
+
+        return response(['dados' => $sticky]);
+    }
+
     public function update(Request $request, $id)
     {
         $sticky = \App\Sticky::find($id);

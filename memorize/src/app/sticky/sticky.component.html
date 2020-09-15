@@ -1,4 +1,9 @@
-<div class="titleSticky">English</div>
+
+<div class="titleSticky " >
+	<span class="cursor-pointer" data-toggle="modal" data-target="#modalCategoryPick">
+		{{categoryActive?.categoria}}
+	</span>
+</div>
 
 <div class="sticky">
 	<div class="card" *ngFor="let sticky of stickers">
@@ -72,7 +77,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal" > Fechar </button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" #closemodalStickyAdd > Fechar </button>
 				<button type="button" class="btn btn-primary" (click)="save(form.value)" [disabled]="!form.valid" > Salvar </button>
 			</div>
 		</div>
@@ -97,9 +102,29 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal" > Fechar </button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" #closemodalCategoryAdd > Fechar </button>
 				<button type="button" class="btn btn-primary" (click)="saveCategory()" [disabled]="!formCategory.valid" > Salvar </button>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- pick Category -->
+<div class="modal fade" id="modalCategoryPick" tabindex="-1" aria-labelledby="modalNewCategory" aria-hidden="true" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalNewCategory">pick category</h5>
+			</div>
+			<div class="modal-body">
+				<div class="content" style="display: flex;">
+					<div class="pickCategory" *ngFor="let cat of categories" (click)="pickCategory(cat)">
+						{{cat.categoria}}
+					</div>
+				</div>
+			</div>
+			<div data-dismiss="modal" #closemodalCategoryPick >  </div>
+		</div>
+	</div>
+</div>
+

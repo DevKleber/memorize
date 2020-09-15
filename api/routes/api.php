@@ -15,5 +15,6 @@ Route::group(['middleware' => 'apiJwt'], function () {
     Route::put('auth/changePassword', 'AuthController@changePassword');
     Route::resource('category', 'CategoryController');
     Route::resource('sticky', 'StickyController');
+    Route::get('sticky/cat/{id}', 'StickyController@byCat');
     Route::post('file', 'ArquivoController@store');
 });

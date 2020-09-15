@@ -1,4 +1,11 @@
-import { Component, OnInit, isDevMode, Inject } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	isDevMode,
+	Inject,
+	ElementRef,
+	ViewChild,
+} from '@angular/core';
 import { StickyService } from './sticky.service';
 import { NotificationService } from '../shared/messages/notification.service';
 import { Helper } from '../helper';
@@ -25,10 +32,18 @@ export class StickyComponent implements OnInit {
 	formCategory: FormGroup;
 	img: any = 'assets/img/user/padrao.svg';
 	selectedFile: File;
+	categoryActive: any = {};
 
 	// Icons
 	faPlus = faPlus;
 	faBars = faBars;
+
+	@ViewChild('closemodalCategoryAdd', { static: true })
+	closemodalCategoryAdd: ElementRef;
+	@ViewChild('closemodalCategoryPick', { static: true })
+	closemodalCategoryPick: ElementRef;
+	@ViewChild('closemodalStickyAdd', { static: true })
+	closemodalStickyAdd: ElementRef;
 
 	constructor(
 		private stickyService: StickyService,
@@ -38,27 +53,39 @@ export class StickyComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.getStickers();
 		this.getCategories();
+		this.initialForms();
+	}
+
+	initialForms() {
 		this.form = this.formBuilder.group({
 			frente: this.formBuilder.control('', [Validators.required]),
 			verso: this.formBuilder.control('', [Validators.required]),
 			id_categoria: this.formBuilder.control(1, [Validators.required]),
 			imagem: this.formBuilder.control(''),
 		});
+
 		this.formCategory = this.formBuilder.group({
 			categoria: this.formBuilder.control('', [Validators.required]),
 		});
 	}
 	getStickers() {
-		this.stickyService.getSticky().subscribe((res) => {
-			this.stickers = res['dados'];
-		});
+		if (this.categoryActive == null) {
+			return;
+		}
+		this.stickyService
+			.getSticky(this.categoryActive.id)
+			.subscribe((res) => {
+				this.stickers = res['dados'];
+				this.closemodalStickyAdd.nativeElement.click();
+			});
 	}
 
 	getCategories() {
 		this.stickyService.getCategories().subscribe((res) => {
 			this.categories = res['dados'];
+			this.getCategoryActive();
+			this.getStickers();
 		});
 	}
 
@@ -88,6 +115,7 @@ export class StickyComponent implements OnInit {
 		this.stickyService.save(form).subscribe((data) => {
 			this.notificationService.notifySweet('saved successfully!');
 		});
+		this.closemodalCategoryAdd.nativeElement.click();
 		this.getStickers();
 	}
 
@@ -106,6 +134,26 @@ export class StickyComponent implements OnInit {
 			.subscribe((res) => {
 				this.notificationService.notifySweet('saved successfully!');
 				this.getCategories();
+				this.closemodalCategoryAdd.nativeElement.click();
 			});
+	}
+
+	getCategoryActive() {
+		this.categoryActive = localStorage.getItem('memorize_catActive')
+			? JSON.parse(localStorage.getItem('memorize_catActive'))
+			: null;
+
+		if (this.categoryActive == null) {
+			this.setCategoryActive(this.categories[0]);
+		}
+	}
+
+	setCategoryActive(category) {
+		this.categoryActive = category;
+		localStorage.setItem('memorize_catActive', JSON.stringify(category));
+	}
+	pickCategory(category) {
+		this.setCategoryActive(category);
+		this.getStickers();
 	}
 }

@@ -15,7 +15,7 @@ export class StickyService {
 	constructor(private http: HttpClient, private router: Router) {}
 
 	getSticky(search?: string): Observable<any[]> {
-		return this.http.get<any[]>(`${API}/sticky`);
+		return this.http.get<any[]>(`${API}/sticky/cat/${search}`);
 	}
 	getCategories(search?: string): Observable<any[]> {
 		return this.http.get<any[]>(`${API}/category`);
