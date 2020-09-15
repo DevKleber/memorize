@@ -27,9 +27,11 @@
 }
 
 input {
-	width: calc(100% - 20px);
+	width: calc(100%);
 	margin: 5px 0;
 	padding: 15px 0;
+	background: var(--backgroundInput)!important;
+	color: var(--backgroundInputColor)!important;
 }
 .btnentrar {
 	width: calc(100%);

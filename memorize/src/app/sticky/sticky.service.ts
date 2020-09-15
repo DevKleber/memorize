@@ -17,10 +17,17 @@ export class StickyService {
 	getSticky(search?: string): Observable<any[]> {
 		return this.http.get<any[]>(`${API}/sticky`);
 	}
+	getCategories(search?: string): Observable<any[]> {
+		return this.http.get<any[]>(`${API}/category`);
+	}
 
 	save(form) {
 		console.log(form);
 		return this.http.post<any>(`${API}/sticky`, form);
+	}
+	saveCategory(form) {
+		console.log(form);
+		return this.http.post<any>(`${API}/category`, form);
 	}
 	file(form) {
 		return this.http

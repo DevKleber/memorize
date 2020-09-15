@@ -30,11 +30,11 @@ label {
 	font-size: 1.2em;
 }
 input,
-textarea {
-	background: var(--background);
-	color: var(--backgroundColor);
-	border: none;
-	padding: 15px;
+textarea,select {
+	background: var(--background)!important;
+	color: var(--backgroundColor)!important;
+	border: none!important;
+	padding: 15px!important;
 	font-size: 1.1em !important;
 	margin: 6px 0px;
 }

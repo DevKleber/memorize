@@ -1,7 +1,9 @@
 import { Component, OnInit, isDevMode, Inject } from '@angular/core';
 import { StickyService } from './sticky.service';
+import { NotificationService } from '../shared/messages/notification.service';
 import { Helper } from '../helper';
 import { API_SITE_PATH_IMG } from './../app.api';
+import { faPlus, faBars } from '@fortawesome/free-solid-svg-icons';
 import {
 	FormBuilder,
 	FormControl,
@@ -20,27 +22,43 @@ export class StickyComponent implements OnInit {
 	isDevMode: boolean = isDevMode();
 	categories: any[] = [];
 	form: FormGroup;
+	formCategory: FormGroup;
 	img: any = 'assets/img/user/padrao.svg';
 	selectedFile: File;
+
+	// Icons
+	faPlus = faPlus;
+	faBars = faBars;
 
 	constructor(
 		private stickyService: StickyService,
 		private formBuilder: FormBuilder,
-		public helper: Helper
+		public helper: Helper,
+		public notificationService: NotificationService
 	) {}
 
 	ngOnInit() {
 		this.getStickers();
+		this.getCategories();
 		this.form = this.formBuilder.group({
 			frente: this.formBuilder.control('', [Validators.required]),
 			verso: this.formBuilder.control('', [Validators.required]),
 			id_categoria: this.formBuilder.control(1, [Validators.required]),
 			imagem: this.formBuilder.control(''),
 		});
+		this.formCategory = this.formBuilder.group({
+			categoria: this.formBuilder.control('', [Validators.required]),
+		});
 	}
 	getStickers() {
 		this.stickyService.getSticky().subscribe((res) => {
 			this.stickers = res['dados'];
+		});
+	}
+
+	getCategories() {
+		this.stickyService.getCategories().subscribe((res) => {
+			this.categories = res['dados'];
 		});
 	}
 
@@ -65,9 +83,10 @@ export class StickyComponent implements OnInit {
 			this.saveForm(form);
 		}
 	}
+
 	saveForm(form) {
 		this.stickyService.save(form).subscribe((data) => {
-			console.log(data);
+			this.notificationService.notifySweet('saved successfully!');
 		});
 		this.getStickers();
 	}
@@ -80,5 +99,13 @@ export class StickyComponent implements OnInit {
 		}
 		this.img = file.img;
 		this.selectedFile = file.selectedFile;
+	}
+	saveCategory() {
+		this.stickyService
+			.saveCategory(this.formCategory.value)
+			.subscribe((res) => {
+				this.notificationService.notifySweet('saved successfully!');
+				this.getCategories();
+			});
 	}
 }
