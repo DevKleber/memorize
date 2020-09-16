@@ -168,7 +168,7 @@ export class StickyComponent implements OnInit {
 
 		this.form.controls['id_categoria'].setValue(this.categoryActive.id);
 		console.log(this.categoryActive.id);
-		if (this.categoryActive.id != undefined) {
+		if (this.categoryActive.id == undefined) {
 			this.setCategoryActive(this.categories[0]);
 		}
 	}
