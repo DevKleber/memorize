@@ -22,8 +22,10 @@ export class HelpersPipe implements PipeTransform {
 		return texto;
 	}
 
-	isDevMode(value, palavra) {
-		let url = value.replace(/public\//g, '');
-		return url;
+	isDevMode(value, isdev) {
+		if (isdev) {
+			return value.replace(/public\//g, '');
+		}
+		return value;
 	}
 }

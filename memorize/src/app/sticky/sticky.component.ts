@@ -15,12 +15,14 @@ import {
 	faBars,
 	faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
+
 import {
 	FormBuilder,
 	FormControl,
 	FormGroup,
 	Validators,
 } from '@angular/forms';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
 	selector: 'app-sticky',
@@ -54,7 +56,8 @@ export class StickyComponent implements OnInit {
 		private stickyService: StickyService,
 		private formBuilder: FormBuilder,
 		public helper: Helper,
-		public notificationService: NotificationService
+		public notificationService: NotificationService,
+		public loaderService: LoaderService
 	) {}
 
 	ngOnInit() {
@@ -78,15 +81,19 @@ export class StickyComponent implements OnInit {
 		if (this.categoryActive.id == undefined) {
 			return;
 		}
+		this.loaderService.isLoad(true);
 		this.stickyService
 			.getSticky(this.categoryActive.id)
 			.subscribe((res) => {
 				this.stickers = res['dados'];
+				this.loaderService.isLoad(false);
 			});
 	}
 
 	getCategories() {
+		this.loaderService.isLoad(true);
 		this.stickyService.getCategories().subscribe((res) => {
+			this.loaderService.isLoad(false);
 			this.categories = res['dados'];
 			this.getCategoryActive();
 			this.getStickers();
@@ -94,6 +101,7 @@ export class StickyComponent implements OnInit {
 	}
 
 	save(form) {
+		this.loaderService.isLoad(true);
 		const uploadData = new FormData();
 		if (this.selectedFile) {
 			uploadData.append(
@@ -122,6 +130,7 @@ export class StickyComponent implements OnInit {
 			this.form.controls['id_categoria'].setValue(form.id_categoria);
 			this.getStickers();
 			this.closemodalStickyAdd.nativeElement.click();
+			this.loaderService.isLoad(false);
 		});
 	}
 
@@ -136,6 +145,7 @@ export class StickyComponent implements OnInit {
 	}
 
 	saveCategory() {
+		this.loaderService.isLoad(true);
 		this.stickyService
 			.saveCategory(this.formCategory.value)
 			.subscribe((res) => {
@@ -147,6 +157,7 @@ export class StickyComponent implements OnInit {
 				this.closemodalCategoryAdd.nativeElement.click();
 				// this.clearForm();
 				this.form.controls['id_categoria'].setValue(res['dados'].id);
+				this.loaderService.isLoad(false);
 			});
 	}
 
@@ -168,7 +179,7 @@ export class StickyComponent implements OnInit {
 	}
 
 	pickCategory(category) {
-		console.log(category);
+		this.loaderService.isLoad(true);
 		this.setCategoryActive(category);
 		this.getStickers();
 		this.closemodalCategoryPick.nativeElement.click();

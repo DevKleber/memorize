@@ -1,3 +1,7 @@
+<a href="https://memorize.arocweb.com.br/">
+	MEMORIZE ONLINE
+</a>
+
 # memorize
 
 Memorizae is a program which makes remembering things easy. Because it's a lot more efficient than traditional study methods.  
