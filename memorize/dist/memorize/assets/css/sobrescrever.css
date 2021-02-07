@@ -1,0 +1,17 @@
+.modal-header {
+	border-bottom: none !important;
+}
+.modal-footer {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	padding: 0.75rem;
+	border-top: none !important;
+	border-bottom-right-radius: calc(0.3rem - 1px);
+	border-bottom-left-radius: calc(0.3rem - 1px);
+}
