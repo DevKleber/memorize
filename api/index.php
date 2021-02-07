@@ -1,5 +1,5 @@
 <?php
-print phpinfo();die;
+// print phpinfo();die;
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
