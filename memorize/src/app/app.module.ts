@@ -21,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
 import { ApplicationErrorHandler } from './app.error-handler';
 import { ErrorHandler } from '@angular/core';
 import { LoginComponent } from './security/login/login.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
 	declarations: [
@@ -40,6 +41,8 @@ import { LoginComponent } from './security/login/login.component';
 
 		// RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
 		RouterModule.forRoot(ROUTES),
+
+		FontAwesomeModule,
 	],
 	providers: [{ provide: ErrorHandler, useClass: ApplicationErrorHandler }],
 	bootstrap: [AppComponent],
